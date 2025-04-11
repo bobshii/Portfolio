@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="loadingbartest.css">
+</head>
+<body>
+    <div class="container">
+        <div class="bar-wrapper">
+            <div class="bar-container">
+                <div class="bar-fill" id="bar"></div>
+            </div>
+            <div class="percent" id="percent">0%</div>
+        </div>
+    </div>
+    <script>
+        let percent = 0;
+        const bar = document.getElementById('bar');
+        const percentText = document.getElementById('percent');
+        const interval = setInterval(()=>{
+            if (percent>=100){
+                clearInterval(interval);
+                window.location.href='portfoliodemo.html';
+            }else{
+                percent++;
+                bar.style.width = percent + '%';
+                percentText.textContent = percent + '%';
+            }
+        }, 50)
+    </script>
+</body>
+</html>
