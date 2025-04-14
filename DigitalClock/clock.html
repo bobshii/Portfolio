@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital CLock</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Its a Clock</h2>
+        <select id="country" name="country">
+            <option hidden selected value="" >Country</option>
+            <option value="India">India</option>
+            <option value="Japan">Japan</option>
+        </select>
+        
+
+        <div class="clock">
+            <span id="hour"></span>
+            <span>:</span>
+            <span id="min"></span>
+            <span>:</span>
+            <span id="sec"></span>
+            
+            <span id="ampm"> </span>
+
+        </div>
+    </div>
+
+    <script>
+        let hrs = document.getElementById("hour");
+        let min = document.getElementById("min");
+        let sec = document.getElementById("sec");
+        let ampm = document.getElementById("ampm");
+
+        let countrySelected = document.getElementById("country");
+
+        let selectedTimeZone = 'Asia/Kolkata';//india by default
+
+        const timeZones = {
+            'India' : 'Asia/Kolkata',
+            'Japan' : 'Asia/Tokyo'
+        };
+
+        //Adding an event listener to the country selected
+
+        countrySelected.addEventListener("change", ()=>{
+            if(timeZones[countrySelected.value]){
+                selectedTimeZone = timeZones[countrySelected.value];
+            }
+        })
+
+
+       
+
+
+
+
+        
+
+        //Set an interval
+        setInterval(()=>{
+            const options = {
+                timeZone : selectedTimeZone,
+                hour : '2-digit',
+                minute : '2-digit',
+                second : '2-digit',
+                hour12 : true
+            };
+            
+            const timeFormatter = new Intl.DateTimeFormat('en-US', options);
+            const parts = timeFormatter.formatToParts(new Date());
+
+            let hour, minute, second, dayPeriod;
+
+            for(part of parts){
+                if(part.type === 'hour') hour = part.value;
+                if(part.type === 'minute') minute = part.value;
+                if(part.type === 'second') second = part.value;
+                if(part.type === 'dayPeriod') dayPeriod = part.value;
+            }
+            
+
+            hrs.innerHTML = hour;
+            min.innerHTML = minute;
+            sec.innerHTML = second;
+            ampm.innerHTML = dayPeriod;
+        }, 1000)
+    </script>
+</body>
+</html>
