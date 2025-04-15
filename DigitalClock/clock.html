@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital CLock</title>
 </head>
-<body>
+<body id="body">
     <div class="container">
         <h2>Its a Clock</h2>
         <select id="country" name="country">
@@ -44,9 +44,22 @@
 
         //Adding an event listener to the country selected
 
+        const options = {
+                timeZone : selectedTimeZone,
+                hour : '2-digit',
+                minute : '2-digit',
+                second : '2-digit',
+                hour12 : true
+            };
+
         countrySelected.addEventListener("change", ()=>{
             if(timeZones[countrySelected.value]){
                 selectedTimeZone = timeZones[countrySelected.value];
+            }
+            options.timeZone = selectedTimeZone;
+            let background = document.getElementById('body');
+            if(selectedTimeZone == 'Asia/Tokyo'){
+                background.style.backgroundImage = "url(./images/fuji.jpeg)";
             }
         })
 
@@ -60,14 +73,8 @@
 
         //Set an interval
         setInterval(()=>{
-            const options = {
-                timeZone : selectedTimeZone,
-                hour : '2-digit',
-                minute : '2-digit',
-                second : '2-digit',
-                hour12 : true
-            };
             
+
             const timeFormatter = new Intl.DateTimeFormat('en-US', options);
             const parts = timeFormatter.formatToParts(new Date());
 
