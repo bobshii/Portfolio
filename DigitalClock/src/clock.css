@@ -1,1 +1,54 @@
-.
+html, body{
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/threads.jpg');
+    background-size: cover;
+    
+    background-position: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+
+
+
+.container{
+    height: 100%;
+    width: 100%;
+    font-size: x-large;
+}
+
+
+#clocktext{
+    height: 50px;
+    padding-top: 50px;
+    text-align: center;
+    margin: 0;
+}
+
+
+.box{
+    width: 100%; 
+
+}
+
+.clock{
+    
+    text-align: center;
+    font-size: 2em;
+     
+}
+
+#country{
+    
+    float: right;
+    height: 30px;
+    width: 100px;
+    margin-right: 10%;
+    border-radius: 7px;
+    color: white;
+    background-color: #4682B4;
+}
+

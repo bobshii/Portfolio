@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/clock.css">
     <title>Digital CLock</title>
 </head>
 <body id="body">
     <div class="container">
-        <h2>Its a Clock</h2>
-        <select id="country" name="country">
-            <option hidden selected value="" >Country</option>
-            <option value="India">India</option>
-            <option value="Japan">Japan</option>
-        </select>
-        
-
-        <div class="clock">
-            <span id="hour"></span>
-            <span>:</span>
-            <span id="min"></span>
-            <span>:</span>
-            <span id="sec"></span>
+        <h2 id="clocktext">Its a Clock</h2><br><br>
+        <div class="box">
             
-            <span id="ampm"> </span>
+            
 
+            <div class="clock" id="clock">
+                <span id="hour"></span>
+                <span>:</span>
+                <span id="min"></span>
+                <span>:</span>
+                <span id="sec"></span>
+            
+                <span id="ampm"> </span>
+
+            </div>
+            
+            <select id="country" name="country">
+                
+                <option value="India">India</option>
+                <option value="Japan">Japan</option>
+            </select>
         </div>
     </div>
 
@@ -58,9 +63,27 @@
             }
             options.timeZone = selectedTimeZone;
             let background = document.getElementById('body');
+            const clock = document.getElementById('clock');  
             if(selectedTimeZone == 'Asia/Tokyo'){
                 background.style.backgroundImage = "url(./images/fuji.jpeg)";
+               
+                clock.style.color = '#FFD700';
+                clock.style.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.6)";
+                clock.style.position = 'absolute';
+                clock.style.left = '42%';
+                
+                
             }
+            if(selectedTimeZone == 'Asia/Kolkata'){
+                background.style.backgroundImage = "url(./images/threads.jpg)";
+                clock.style.color = 'white';
+            }
+
+            const text1 = document.getElementById('clocktext');
+            text1.innerHTML = '';
+            text1.style.height = 0;
+
+
         })
 
 
