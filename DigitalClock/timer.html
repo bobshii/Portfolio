@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/timer.css">
+    <title>Timer</title>
+</head>
+<body>
+    
+        <div class="timer-container">
+                <div id="timer">
+                    <span id="hour">00</span>
+                    <span>:</span>
+                    <span id="min">00</span>
+                    <span>:</span>
+                    <span id="sec">00</span>
+                </div>
+                <div class="buttons">
+                    <button id="start">Start</button>
+                    <button id="stop">Stop</button>
+                    <button id="reset">Reset</button>
+                    <button id="restart">Restart</button>
+                </div>
+                
+            
+        </div>
+    
+
+    <script>
+
+        
+        const hrs = document.getElementById('hour');
+        const min = document.getElementById('min');
+        const sec = document.getElementById('sec');
+        const start = document.getElementById('start');
+        const stop = document.getElementById('stop');
+        const reset = document.getElementById('reset');
+        const restart = document.getElementById('restart');
+
+        let demosec = 0;
+        let demomin = 0;
+        let demohrs = 0;
+        let interval = null;
+        
+        function updateTimer(){
+            sec.innerHTML = demosec < 10 ? '0'+demosec : demosec;
+            min.innerHTML = demomin < 10 ? '0'+demomin : demomin;
+            hrs.innerHTML = demohrs < 10 ? '0'+demohrs : demohrs;  
+        }
+
+        function startTimer(){
+            if(interval) return;
+            interval = setInterval(()=>{
+                demosec++;
+                if(demosec > 59){
+                    demomin++;
+                    demosec = 0;
+                }
+
+                if(demomin > 59){
+                    demohrs++;
+                    demomin = 0;
+                }
+
+                updateTimer();
+            },1000)
+        }
+
+        /**start.addEventListener('click', ()=>{
+            let demosec = 0;
+            let demomin = 0;
+            let demohrs = 0;
+            
+
+            interval =  setInterval(()=>{
+
+                //increement the seconds
+                if(demosec < 10){
+                    sec.innerHTML = '0'+demosec;
+                }else if(demosec > 59){
+                    sec.innerHTML = '00';
+                }else{
+                    sec.innerHTML = demosec;
+                }
+                //increement the minutes
+                if(demosec > 59){
+                    demomin = demomin+1;
+                    if(demomin < 10){
+                        min.innerHTML = '0'+demomin;
+                    }else if(demomin > 59){
+                        min.innerHTML = '00';
+                    }else{
+                        min.innerHTML = demomin;
+                    }
+                    demosec = 0;
+                }
+                //increement the hours
+                if(demomin > 59){
+                    demohrs = demohrs+1;
+                    if(demohrs <10){
+                        hrs.innerHTML = '0'+demohrs;
+                    }else{
+                        hrs.innerHTML = demohrs;
+                    }
+                }
+
+                demosec = demosec + 1;
+
+
+            }, 1000)
+        })
+        **/
+        function stopTimer(){
+            clearInterval(interval);
+            interval = null;
+        }
+
+        function resetTimer(){
+            demosec = 0;
+            demomin = 0;
+            demohrs = 0;
+            updateTimer();
+            stopTimer();
+        }
+
+        function restartTimer(){
+            resetTimer();
+            startTimer();
+        }
+
+
+        start.addEventListener('click', startTimer);
+        stop.addEventListener('click', stopTimer);
+        reset.addEventListener('click', resetTimer);
+        restart.addEventListener('click', restartTimer);
+    </script>
+</body>
+</html>

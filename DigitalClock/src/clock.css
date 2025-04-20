@@ -10,7 +10,12 @@ html, body{
     
 }
 
-
+hr{
+    height: 1px;
+    opacity: 0.3;
+    
+    margin-top: 1px;
+}
 
 
 
@@ -30,25 +35,52 @@ html, body{
 
 
 .box{
+    padding-top: 5%;
     width: 100%; 
 
+}
+
+#ampm{
+    text-transform: lowercase;
 }
 
 .clock{
     
     text-align: center;
-    font-size: 2em;
-     
+    font-size: clamp(1.5rem, 5vw, 4rem);
 }
 
-#country{
-    
-    float: right;
-    height: 30px;
-    width: 100px;
-    margin-right: 10%;
-    border-radius: 7px;
-    color: white;
-    background-color: #4682B4;
+.clock span{
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
 }
+
+#country, #timer{
+    height: 30px;
+    width: auto;
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.navigation{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 100px;
+    box-sizing: border-box;
+}
+
+.pop:hover{
+    transform: scale(1.6);
+}
+
+
+
+
+
+
+
+
+
 

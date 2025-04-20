@@ -8,28 +8,31 @@
 </head>
 <body id="body">
     <div class="container">
-        <h2 id="clocktext">Its a Clock</h2><br><br>
-        <div class="box">
-            
-            
-
-            <div class="clock" id="clock">
-                <span id="hour"></span>
-                <span>:</span>
-                <span id="min"></span>
-                <span>:</span>
-                <span id="sec"></span>
-            
-                <span id="ampm"> </span>
-
-            </div>
-            
+        <nav class="navigation">
             <select id="country" name="country">
                 
                 <option value="India">India</option>
                 <option value="Japan">Japan</option>
             </select>
+            <span>|</span>
+            <button id="timer">Timer</button>
+        </nav><hr id="hr1">
+        
+        
+        <div class="box">
+            <div class="clock" id="clock">
+                <span id="hour" class="pop"></span>
+                <span>:</span>
+                <span id="min" class="pop"></span>
+                <span>:</span>
+                <span id="sec" class="pop"></span>
+            
+                <span id="ampm" class="pop"> </span>
+
+            </div>  
         </div>
+        
+        
     </div>
 
     <script>
@@ -64,6 +67,7 @@
             options.timeZone = selectedTimeZone;
             let background = document.getElementById('body');
             const clock = document.getElementById('clock');  
+            const hrElement = document.getElementById('hr1');
             if(selectedTimeZone == 'Asia/Tokyo'){
                 background.style.backgroundImage = "url(./images/fuji.jpeg)";
                
@@ -72,11 +76,17 @@
                 clock.style.position = 'absolute';
                 clock.style.left = '42%';
                 
+                hrElement.remove();
+                countrySelected.style.backgroundColor = 'transparent';
+                countrySelected.style.color = 'black';
+                
                 
             }
             if(selectedTimeZone == 'Asia/Kolkata'){
                 background.style.backgroundImage = "url(./images/threads.jpg)";
                 clock.style.color = 'white';
+                countrySelected.style.color = 'white';
+
             }
 
             const text1 = document.getElementById('clocktext');
