@@ -9,6 +9,49 @@ html, body{
     box-sizing: border-box;
 }
 
+.navbar{
+    width: 100%;
+    display: flex;
+    
+}
+#clock{
+   height: 30px;
+   font-size: large;
+   padding: 0;
+   margin-left: 1rem;
+   margin-top: 0.5rem;
+   margin-bottom: 0.5rem;
+   background-color: transparent;
+   border: none;
+   color: white;
+   position: relative;
+   
+   
+}
+
+#clock:hover{
+    
+    color:coral;
+}
+
+#clock::after{
+    content: '';
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    background-color: currentColor;
+    height: 2px;
+    transition: width 0.3s ease-in-out;
+    
+}
+
+#clock:hover::after{
+    
+    width: 100%;
+}
+
+
 .timer-container{
     height: 100%;
     width: 100%;
@@ -16,6 +59,11 @@ html, body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+hr{
+    padding: 0;
+    margin: 0;
 }
 
 #timer{

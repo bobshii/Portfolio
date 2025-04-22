@@ -8,14 +8,14 @@
 </head>
 <body id="body">
     <div class="container">
-        <nav class="navigation">
+        <nav id="navigation">
             <select id="country" name="country">
                 
                 <option value="India">India</option>
                 <option value="Japan">Japan</option>
             </select>
             <span>|</span>
-            <button id="timer">Timer</button>
+            <button id="timer">TIMER</button>
         </nav><hr id="hr1">
         
         
@@ -36,10 +36,13 @@
     </div>
 
     <script>
+        let timer = document.getElementById('timer');
         let hrs = document.getElementById("hour");
         let min = document.getElementById("min");
         let sec = document.getElementById("sec");
         let ampm = document.getElementById("ampm");
+        let horizontal = document.getElementById('hr1');
+        let navbar = document.getElementById("navigation");
 
         let countrySelected = document.getElementById("country");
 
@@ -76,9 +79,14 @@
                 clock.style.position = 'absolute';
                 clock.style.left = '42%';
                 
-                hrElement.remove();
+                
                 countrySelected.style.backgroundColor = 'transparent';
-                countrySelected.style.color = 'black';
+                countrySelected.style.color = 'white';
+                horizontal.remove();
+
+                navbar.style.backgroundColor = 'rgba(25, 25, 112, 0.5)';
+                
+
                 
                 
             }
@@ -86,6 +94,7 @@
                 background.style.backgroundImage = "url(./images/threads.jpg)";
                 clock.style.color = 'white';
                 countrySelected.style.color = 'white';
+                navbar.style.backgroundColor = 'black';
 
             }
 
@@ -98,7 +107,9 @@
 
 
        
-
+        timer.addEventListener('click',()=>{
+            window.location.href="./timer.html";
+        })
 
 
 
